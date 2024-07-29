@@ -215,10 +215,6 @@ class DetectSegment:
         image, bbox, mask, padded_mask, red_mask, object_mask = self.process_image(image_path, label, task = 'first')
         print('Detecting and Segmenting the object..')
         #save all the masks 
-        # red_mask.save(f"/mnt/sravanth/red.png")
-        # padded_mask.save(f"/mnt/sravanth/padded.png")
-        # mask.save("/mnt/sravanth/mask.png")
-        # object_mask.save("/mnt/sravanth/object_mask.png")
         
         if not do_rotation:
             print('Generating Mask..')
@@ -230,12 +226,12 @@ class DetectSegment:
                 
             save_path = output_path #+ f"{i}_rotated.png"
             rotated_img = self.rotate_image.rotate_image_2d(object_mask, -azimuth, polar)
-            # rotated_img.save("/mnt/sravanth/rotated_img.png")
+           
             #process rotated_image as img_2 
             image_rotated, bbox_rotated, mask_rotated, padded_mask_rotated, red_mask_rotated, object_mask_rotated = self.process_image(rotated_img, label, task = 'second')
             
             background_image = self.get_background(image, padded_mask)
-            # background_image.save("/mnt/sravanth/background_image.png")
+           
             
             transformed_image = self.get_transparent_png(image_rotated, mask_rotated, bbox_rotated, background_image, bbox)
             

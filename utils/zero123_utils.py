@@ -173,10 +173,9 @@ def predict_stage1_gradio(model, raw_im, adjust_set=[], device="cuda", ddim_step
         out_image = Image.fromarray(x_sample.astype(np.uint8))
         ret_imgs.append(out_image)
         
-        save_path = "/mnt/sravanth/"
-        if save_path:
-            out_image.save(os.path.join(save_path, f'{stage1_idx}.png'))
-        sample_idx += 1
+        # if save_path:
+        #     out_image.save(os.path.join(save_path, f'{stage1_idx}.png'))
+        # sample_idx += 1
 
     # best_image = check_best_matching_image(ret_imgs, raw_im)
     best_image = ret_imgs[0].resize((width, height), Image.LANCZOS)
