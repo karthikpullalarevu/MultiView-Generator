@@ -125,8 +125,10 @@ python3 run.py --image ./laptop.jpg --class_name "laptop" --output ./generated.p
     <br><br>
      <img src = "assets/images/anydoor.png" alt="anydoor">
      <br><br>
-    3. Next attempt was when I thought we already have the bbox coordinates of the object in the original image and that we can place the newly rotated object directly at the center of those coordinates. But as I tried this, noticed that the generated view was of resolution (256,256), so segmenting directly and resizing to original object's size was resulting in poor quality of final result. 
-     
+    3. Next attempt was when I thought we already have the bbox coordinates of the object in the original image and that we can place the newly rotated object directly at the center of those coordinates. But as I tried this, noticed that the generated view was of resolution (256,256), so segmenting directly and resizing to original object's size was resulting in poor quality of final result. Performed EDSR Image resolution enhancement to increase the resolution of the rotated object. 
+   <br><br>
+   <img src = "assets/images/upscale.png" alt="upsample">
+   <br><br>
 </details>
 <h2>Additional steps/methods taken</h2>
 <p>
