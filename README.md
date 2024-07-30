@@ -148,8 +148,8 @@ python3 run.py --image ./laptop.jpg --class_name "laptop" --output ./generated.p
 <p>I will add more results to the examples folder with "class_azimuth_polar" format </p>
 
 
-<h2>Conclusion & Insights</h2>
-<p>This was a crazy and amazing task. Felt like I was building an entire product end-end. I am keen on seeing results post finetuning and getting more realistic results.</p>
+## Conclusion & Insights
+This was overall one of the most novel task I solved outside of work. Felt like I was building an entire product end-end. This really gave me the chance to learn in depth about SD models and understand the scale at which research is happening in this area. Please reach out to me at karthik.pullalarevu@gmail.com for any queries rearding inference. 
   
 
 
