@@ -117,7 +117,10 @@ python3 run.py --image ./laptop.jpg --class_name "laptop" --output ./generated.p
 <summary>Step 4: Adding the rotated object to background </summary> 
    <p>
      <br><br>
-     1. Read a couple of papers/went through a few hugging face spaces to see if any existing diffusion models can already do this, found some adaptors, but were not specifically generating the same object. <br> 
+     1. Read a couple of papers/went through a few hugging face spaces to see if any existing diffusion models can already do this, found some adaptors, but were not specifically generating the same object. 
+     <br><br>
+     <img src = "assets/images/ipadaptor.png" alt="ip">
+     <br><br>
      2. As I was going through the spaces, I came across any "Zero-shot Object-level Image Customization". I cloned the git repo, modified the code to take in source image, source mask as the original image mask, target image i.e. rotated image and target mask i.e. SAM output on rotated image. The method worked very randomly, tried to set the seed and enable shape control but the results were not consistent. Analysis: Read the paper again to found that the model doesnt perform very well yet on on the wild images and orientations. 
     <br><br>
      <img src = "assets/images/anydoor.png" alt="anydoor">
@@ -125,8 +128,20 @@ python3 run.py --image ./laptop.jpg --class_name "laptop" --output ./generated.p
     3. Next attempt was when I thought we already have the bbox coordinates of the object in the original image and that we can place the newly rotated object directly at the center of those coordinates. But as I tried this, noticed that the generated view was of resolution (256,256), so segmenting directly and resizing to original object's size was resulting in poor quality of final result. 
      
 </details>
+<h2>Additional steps/methods taken</h2>
+<p>
+  1. While extracting the object before passing to to one-3D model, I noticed that DDIM model fails to build an accurate mesh for small objects, so I had to crop the object using a certain padding. <br><br>
+  2. Explored poisson blending while placing the object onto the background to get smoother results, performed similar, hence dint go ahead with it. 
+</p>
+<h2>Further Improvements</h2>
+<p>
+  1. Image to 3D models can be much better if fintuned for this use case, since I see relevance in ecommerce, shopping, etc, applying the model for specific usecase might give better results. <br><br>
+  2. If polar value is set, need to figure out a better method to blend the image onto the background. 
+</p>
 
-
+<h2>Conclusion & Insights</h2>
+<p>
+  
 
 
 
