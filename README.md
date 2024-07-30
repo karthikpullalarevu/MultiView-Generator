@@ -61,12 +61,66 @@ python3 run.py --image ./laptop.jpg --class_name "laptop" --output ./generated.p
 <details>
 <summary>Step 1: Segmentation </summary> 
    <p>
-     1. Started with ClipSeg as I had used it before. Tried different confidence values but the model wasnt performing well. 
-     <br>
-     <img src = "assets/images/clipseg.png" alt="clipseg results"
+     <br><br>
+     1. Started with ClipSeg as I had used it before. Tried different threshold values but the model wasnt performing well. 
+     <br><br>
+     <img src = "assets/images/clipseg.png" alt="clipseg results">
+     <br><br>
+     2. I had worked on SAM previously and saw that the model performs very well, but since it doesn't take in a text prompt, I did a little research and found that Grounding Dino + SAM will work out. Tried with SAM base, SAM large and SAM huge and finally chose SAM large as the optimal model for the task. This combination gave very good results, hence dint look for alternate methods. 
+    <br><br>
+     <img src = "assets/images/gsam.png" alt="groudningSAM results">
+     <br><br>
    </p>
       
 </details>
+
+<details>
+<summary>Step 2: Image to 3D view </summary> 
+   <p>
+     <br><br>
+     1. Used the base version of One shot single image to 3D model. The model worked well on the easier objects/angles but messed up angles that were harder to generate. Attaching a few images from the experiments at various angles with this attempt. 
+     <br><br>
+     <img src = "assets/images/3d_1.png" alt="zero 123 results 1">
+     <br><br>
+     2. Ran this model also on various combinations of guidance scale (range 0.5 -> 4.0), angles (range 20 -> 340), and number of ddim sampling steps (range: 15 -> 100). Found that guidance scale 3.0 and ddim steps 75 gave the best results for three objects (laptop, chair and sofa). Higher steps caused more distortions and lower steps couldnt construct the object fully.
+    <br><br>
+     <img src = "assets/images/parameters.png" alt="zero123 parameters">
+     <br><br>
+     3. Did a little more research and came across One-2-3-45 paper. I saw their preprocessing and the checkpoint they used was zero-123-xl checkpoint. Figured that removing the 'carvekit' preprocessing which was done in the new paper, was giving better results. Clearly shows that the xl model was better at generalizing at complex angles. 
+    <br><br>
+     <img src = "assets/images/3d_2.png" alt="3d2">
+     <br><br>
+     
+   </p>
+      
+</details>
+
+<details>
+<summary>Step 3: SD Inpainting </summary> 
+   <p>
+     <br><br>
+     1. Initially, approached this thinking that I can use the rotated object directly to blend it onto the source image, but the model always messed up the results. I tried methods by placing the rotated object on top the original object and used the mask to inpaint with a prompt "remove the behind object and blend the top object". Although I was aware that this was not what the model has learned to do, just gave it a shot and no wonder, it dint work. 
+     <br><br>
+     2. I remembered, we can remove objects/people using my friend's pixel mobile and thought why ca we do the same here i.e. get the background of the original image. This is when I went with extracting the background of the images using SD inpainting. There are couple of things I tried here with the masks:<br>
+     a. Passed the strict binary mask predicted by SAM -> was still having issues getting the proper background.
+     b. Used the entire bounding box as mask -> was removing surrounding objects also
+     c. Padded the segmentation map using cv2 dilations. 
+    <br><br>
+     <img src = "assets/images/failed_inpainting.png" alt="failed inpainting">
+     <br><br>
+     <br><br>
+     <img src = "assets/images/inpainting_final.png" alt="inpainting">
+     <br><br>
+     3. Did a little more research and came across One-2-3-45 paper. I saw their preprocessing and the checkpoint they used was zero-123-xl checkpoint. Figured that removing the 'carvekit' preprocessing which was done in the new paper, was giving better results. Clearly shows that the xl model was better at generalizing at complex angles. 
+    <br><br>
+     <img src = "assets/images/3d_2.png" alt="3d2">
+     <br><br>
+     
+   </p>
+      
+</details>
+
+
 
 
 
