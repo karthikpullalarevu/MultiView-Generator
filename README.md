@@ -138,11 +138,18 @@ python3 run.py --image ./laptop.jpg --class_name "laptop" --output ./generated.p
 <h2>Further Improvements</h2>
 <p>
   1. Image to 3D models can be much better if fintuned for this use case, since I see relevance in ecommerce, shopping, etc, applying the model for specific usecase might give better results. <br><br>
-  2. If polar value is set, need to figure out a better method to blend the image onto the background. 
+  2. Can train an adaptor to blend the image onto the background better. 
 </p>
+<h2>More examples</h2>
+<p><img src = "assets/images/example1.png" alt="examples"></p>
+<br><br>
+<p><img src = "assets/images/example2.png" alt="examples"></p>
+<br><br>
+<p>I will add more results to the examples folder with "class_azimuth_polar" format </p>
+
 
 <h2>Conclusion & Insights</h2>
-<p>
+<p>This was a crazy and amazing task. Felt like I was building an entire product end-end. I am keen on seeing results post finetuning and getting more realistic results.</p>
   
 
 
