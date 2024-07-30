@@ -225,7 +225,7 @@ class DetectSegment:
            
                 
             save_path = output_path #+ f"{i}_rotated.png"
-            rotated_img = self.rotate_image.rotate_image_2d(object_mask, -azimuth, polar)
+            rotated_img = self.rotate_image.rotate_image_2d(object_mask, -azimuth, -polar)
            
             #process rotated_image as img_2 
             image_rotated, bbox_rotated, mask_rotated, padded_mask_rotated, red_mask_rotated, object_mask_rotated = self.process_image(rotated_img, label, task = 'second')
