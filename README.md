@@ -111,13 +111,19 @@ python3 run.py --image ./laptop.jpg --class_name "laptop" --output ./generated.p
      <br><br>
      <img src = "assets/images/inpainting_final.png" alt="inpainting">
      <br><br>
-     3. Did a little more research and came across One-2-3-45 paper. I saw their preprocessing and the checkpoint they used was zero-123-xl checkpoint. Figured that removing the 'carvekit' preprocessing which was done in the new paper, was giving better results. Clearly shows that the xl model was better at generalizing at complex angles. 
-    <br><br>
-     <img src = "assets/images/3d_2.png" alt="3d2">
+</details>
+
+<details>
+<summary>Step 4: Adding the rotated object to background </summary> 
+   <p>
      <br><br>
+     1. Read a couple of papers/went through a few hugging face spaces to see if any existing diffusion models can already do this, found some adaptors, but were not specifically generating the same object. <br> 
+     2. As I was going through the spaces, I came across any "Zero-shot Object-level Image Customization". I cloned the git repo, modified the code to take in source image, source mask as the original image mask, target image i.e. rotated image and target mask i.e. SAM output on rotated image. The method worked very randomly, tried to set the seed and enable shape control but the results were not consistent. Analysis: Read the paper again to found that the model doesnt perform very well yet on on the wild images and orientations. 
+    <br><br>
+     <img src = "assets/images/anydoor.png" alt="anydoor">
+     <br><br>
+    3. Next attempt was when I thought we already have the bbox coordinates of the object in the original image and that we can place the newly rotated object directly at the center of those coordinates. But as I tried this, noticed that the generated view was of resolution (256,256), so segmenting directly and resizing to original object's size was resulting in poor quality of final result. 
      
-   </p>
-      
 </details>
 
 
