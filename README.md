@@ -1,4 +1,4 @@
-# MultiView-Avataar_task
+# MultiView-Generator
 ![Alt text](assets/images/workflow.png)
 <p align = "center"> Fig 1. Workflow</p>
 
