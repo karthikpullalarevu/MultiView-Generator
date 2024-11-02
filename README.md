@@ -149,7 +149,7 @@ python3 run.py --image ./laptop.jpg --class_name "laptop" --output ./generated.p
 
 
 ## Conclusion & Insights
-This was overall one of the most novel task I solved outside of work. Felt like I was building an entire product end-end. This really gave me the chance to learn in depth about SD models and understand the scale at which research is happening in this area. Please reach out to me at karthik.pullalarevu@gmail.com for any queries rearding inference. 
+Please reach out to me at karthik.pullalarevu@gmail.com for any queries rearding the task. 
   
 
 
