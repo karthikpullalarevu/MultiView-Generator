@@ -25,7 +25,7 @@ Hardware Requirements: GPU VRAM >= 27GB; RAM >= 30 GB
 ```bash
 conda create -n multiview python=3.9
 conda activate multiview
-cd MultiView-Avataar_task
+cd MultiView-Generator_task
 pip install -r requirements.txt
 ```
 </details>
@@ -34,7 +34,7 @@ pip install -r requirements.txt
 <summary>Step 2: Download the checkpoint for one shot image to 3D. </summary> 
 
 ```bash
-cd MultiView-Avataar_task
+cd MultiView-Generator_task
 wget https://zero123.cs.columbia.edu/assets/zero123-xl.ckpt
 ```
 </details>
